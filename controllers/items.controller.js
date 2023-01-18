@@ -1,5 +1,6 @@
 const ErrorResponse = require("../helpers/error.helper")
 const Response = require("../helpers/response.helper")
+const {User} = require('../database/models')
 
 class ItemsController {
     getItems(req, res, next) {
