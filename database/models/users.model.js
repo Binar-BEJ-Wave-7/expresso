@@ -15,7 +15,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true
     },
-    address: {
+    alamat: {
       type: DataTypes.STRING,
       allowNull: true
     },
@@ -36,7 +36,10 @@ User.init(
     sequelize: sequelize,
     timestamps: true,
     paranoid: true,
-    underscored: true
+    underscored: true,
+    deletedAt: 'deleted_at',
+    updatedAt: 'updated_at',
+    createdAt: 'created_at',
   },
 )
 

@@ -1,19 +1,20 @@
 const ErrorResponse = require("../helpers/error.helper")
 const Response = require("../helpers/response.helper")
-const {User} = require('../database/models')
+const { Product } = require('../database/models')
 
 class ItemsController {
-    getItems(req, res, next) {
-        const data = [
-            {
-                item_id: 1,
-                item_name: 'Botol Kecap'
-            },
-            {
-                item_id: 2,
-                item_name: 'Botol Saus'
-            }
-        ]
+    async getItems(req, res, next) {
+        const { page = '1', limit = '3'} = req.query
+
+        const pageInt = Number(page)
+        const limitInt = Number(limit)
+        const offset = (pageInt - 1) * limitInt
+
+        const data = await Product.findAll({
+            attributes: ['id', 'name', 'price', 'stock', 'sku'],
+            limit: limitInt,
+            offset: offset
+        })
 
         return new Response(res, 200, data)
     }

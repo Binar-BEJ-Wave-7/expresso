@@ -3,7 +3,8 @@ const Product = require('./products.model')
 const sequelize = require('./sequelize')
 
 Product.belongsTo(User, {
-  as: 'owner'
+  as: 'owner',
+  foreignKey: 'user_id',
 })
 
 User.hasMany(Product, {

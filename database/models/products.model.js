@@ -30,13 +30,19 @@ Product.init(
     user_id: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      field: 'user_id'
     },
   },
   {
     sequelize: sequelize,
     timestamps: true,
     paranoid: true,
-    underscored: true
+    underscored: true,
+    deletedAt: 'deleted_at',
+    updatedAt: 'updated_at',
+    createdAt: 'created_at',
+    tableName: 'products',
+    freezeTableName: true,
   },
 )
 
