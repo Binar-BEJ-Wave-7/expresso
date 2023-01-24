@@ -15,7 +15,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true
     },
-    alamat: {
+    address: {
       type: DataTypes.STRING,
       allowNull: true
     },
