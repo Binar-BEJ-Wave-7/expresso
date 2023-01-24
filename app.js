@@ -16,10 +16,13 @@ app.use('/v1', itemRouter)
 app.use((err, req, res, next) => {
     console.log(err)
 
-    return res.status(err.status).json({
+    const status = err.status || 500
+    const error = err.error || err.message || 'Internal server error'
+
+    return res.status(status).json({
         status: false,
         data: {},
-        error: err.error
+        error: error
     })
 })
 
