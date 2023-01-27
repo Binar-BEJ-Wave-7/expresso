@@ -14,7 +14,12 @@ class ItemsController {
             const data = await Product.findAll({
                 attributes: ['id', 'name', 'price', 'stock', 'sku'],
                 limit: limitInt,
-                offset: offset
+                offset: offset,
+                include: [{
+                    model: User,
+                    as: 'owner',
+                    attributes: ['id', 'full_name', 'email'],
+                }]
             })
     
             if (data.length === 0) {
