@@ -3,13 +3,16 @@ const express = require('express')
 const app = express()
 const itemRouter = require('./routers/items.router')
 const userRouter = require('./routers/users.router')
+const homesRouter = require('./routers/homes.router')
 
 // Middleware: request -> middleware -> controller/handler
 app.use(express.json()) // contoh fungsi express.json()
+app.set('view engine', 'ejs')
 
 // Router
 app.use('/v1', itemRouter)
 app.use('/v1', userRouter)
+app.get('/', homesRouter)
 
 // Design Pattern
 
